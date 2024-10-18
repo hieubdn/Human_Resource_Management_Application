@@ -37,8 +37,6 @@ Hệ thống HRM này được phát triển bằng kiến trúc Micro Frontend,
 
 # HRM Application Setup Guide  -  ENGENG
 
-## Prerequisites
-
 Before starting, make sure you have the following software installed on your machine:
 
 - **Git**: [Install Git](https://git-scm.com/downloads)
@@ -98,8 +96,6 @@ Before starting, make sure you have the following software installed on your mac
 - Make sure no other services are using ports `3000`, `3001`, `3002`, or `8080` to avoid conflicts.
 
 # Hướng Dẫn Cài Đặt HRM Application  -  VNM
-
-## Yêu Cầu Trước Khi Bắt Đầu
 
 Trước khi bắt đầu, hãy đảm bảo rằng bạn đã cài đặt các phần mềm sau trên máy tính của mình:
 
