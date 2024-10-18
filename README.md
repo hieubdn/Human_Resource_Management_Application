@@ -111,3 +111,86 @@ Before starting, make sure you have the following software installed on your mac
   ```sh
   git pull
   docker-compose up --build
+
+
+
+
+
+# Hướng Dẫn Cài Đặt HRM Application
+
+Hướng dẫn này sẽ giúp bạn thiết lập HRM Application trên máy tính của bạn từng bước một, bao gồm việc clone repo, cài đặt các phụ thuộc cần thiết, và chạy ứng dụng bằng Docker.
+
+## Yêu Cầu Trước Khi Bắt Đầu
+
+Trước khi bắt đầu, hãy đảm bảo rằng bạn đã cài đặt các phần mềm sau trên máy tính của mình:
+
+- **Git**: [Cài Đặt Git](https://git-scm.com/downloads)
+- **Docker Desktop**: [Cài Đặt Docker](https://www.docker.com/products/docker-desktop/)
+- **VS Code (Không bắt buộc)**: [Tải VS Code](https://code.visualstudio.com/)
+
+## Hướng Dẫn Chi Tiết
+
+### Bước 1: Clone Repo
+
+1. Mở terminal hoặc command prompt.
+2. Clone repo từ GitHub bằng lệnh sau:
+
+   ```sh
+   git clone https://github.com/hieubdn/HRM-Application.git
+   ```
+3. Di chuyển vào thư mục vừa clone:
+
+   ```sh
+   cd HRM-Application
+   ```
+
+### Bước 2: Khởi Động Docker Desktop
+
+1. **Mở Docker Desktop** trên máy của bạn.
+2. Đợi đến khi Docker Engine khởi động thành công. Bạn sẽ thấy chỉ báo màu xanh lá với trạng thái "Running" trên Docker Desktop.
+
+### Bước 3: Build và Chạy Ứng Dụng Với Docker
+
+1. Trong terminal (vẫn đang ở thư mục `HRM-Application`), chạy lệnh sau để build và chạy tất cả các dịch vụ được định nghĩa trong file `docker-compose.yml`:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+2. Docker sẽ tải các image cần thiết, build các container, và khởi động các dịch vụ cho HRM Application. Quá trình này có thể mất vài phút.
+
+### Bước 4: Truy Cập Ứng Dụng
+
+- Khi tất cả các dịch vụ đã khởi động, bạn có thể truy cập các module của ứng dụng trong trình duyệt:
+  - **HRM Main Application**: [http://localhost:3000](http://localhost:3000)
+  - **Recruitment Module**: [http://localhost:3001](http://localhost:3001)
+  - **Employee Profiles Module**: [http://localhost:3002](http://localhost:3002)
+
+### Bước 5: Dừng Ứng Dụng
+
+1. Để dừng ứng dụng, vào terminal nơi đang chạy `docker-compose` và nhấn `Ctrl + C` để dừng các container đang chạy.
+2. Nếu bạn muốn xóa tất cả các container, network, và volume được tạo bởi Docker, chạy lệnh:
+
+   ```sh
+   docker-compose down
+   ```
+
+## Lưu Ý
+
+- **Docker Desktop** phải được khởi động trước khi bạn chạy ứng dụng với Docker.
+- Hãy chắc chắn rằng không có dịch vụ nào khác đang sử dụng các cổng `3000`, `3001`, `3002`, hoặc `8080` để tránh xung đột.
+- Nếu gặp phải vấn đề, hãy kiểm tra log của Docker để khắc phục sự cố.
+
+## Các Vấn Đề Thường Gặp
+
+- **Xung Đột Cổng**: Nếu một trong các cổng trên đã được sử dụng, hãy dừng dịch vụ đang sử dụng cổng đó hoặc sửa file `docker-compose.yml` để sử dụng các cổng khác.
+- **Docker Engine Không Chạy**: Đảm bảo Docker Desktop đã được mở và đang chạy trước khi thực hiện lệnh `docker-compose`.
+
+## Cập Nhật Mới
+
+- Nếu bạn cập nhật mã và muốn chạy phiên bản đã cập nhật, hãy chạy:
+  ```sh
+  git pull
+  docker-compose up --build
+  ```
+
