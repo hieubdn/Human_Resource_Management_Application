@@ -96,19 +96,6 @@ Before starting, make sure you have the following software installed on your mac
 
 - **Docker Desktop** must be running before you attempt to start the application with Docker.
 - Make sure no other services are using ports `3000`, `3001`, `3002`, or `8080` to avoid conflicts.
-- If you face any issues, make sure to check the Docker logs for troubleshooting.
-
-## Common Issues
-
-- **Port Conflicts**: If any of the above ports are already in use, either stop the service using that port or modify the `docker-compose.yml` file to use different ports.
-- **Docker Engine Not Running**: Ensure Docker Desktop is open and running before running the `docker-compose` command.
-
-## Future Updates
-
-- If you update the code and want to run the updated version, run:
-  ```sh
-  git pull
-  docker-compose up --build
 
 # Hướng Dẫn Cài Đặt HRM Application  -  VNM
 
@@ -171,18 +158,3 @@ Trước khi bắt đầu, hãy đảm bảo rằng bạn đã cài đặt các 
 
 - **Docker Desktop** phải được khởi động trước khi bạn chạy ứng dụng với Docker.
 - Hãy chắc chắn rằng không có dịch vụ nào khác đang sử dụng các cổng `3000`, `3001`, `3002`, hoặc `8080` để tránh xung đột.
-- Nếu gặp phải vấn đề, hãy kiểm tra log của Docker để khắc phục sự cố.
-
-## Các Vấn Đề Thường Gặp
-
-- **Xung Đột Cổng**: Nếu một trong các cổng trên đã được sử dụng, hãy dừng dịch vụ đang sử dụng cổng đó hoặc sửa file `docker-compose.yml` để sử dụng các cổng khác.
-- **Docker Engine Không Chạy**: Đảm bảo Docker Desktop đã được mở và đang chạy trước khi thực hiện lệnh `docker-compose`.
-
-## Cập Nhật Mới
-
-- Nếu bạn cập nhật mã và muốn chạy phiên bản đã cập nhật, hãy chạy:
-  ```sh
-  git pull
-  docker-compose up --build
-  ```
-
