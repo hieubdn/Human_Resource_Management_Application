@@ -33,3 +33,81 @@ Hệ thống HRM này được phát triển bằng kiến trúc Micro Frontend,
 
 3. **Chạy ứng dụng từ HRM-main**:
    - Toàn bộ ứng dụng nên chạy từ module **HRM-main**, đảm bảo điều hướng mượt mà giữa các module phụ.
+
+
+# HRM Application Setup Guide
+
+This guide will help you set up the HRM Application on your local machine step by step, including cloning the repository, installing required dependencies, and running the application using Docker.
+
+## Prerequisites
+
+Before starting, make sure you have the following software installed on your machine:
+
+- **Git**: [Install Git](https://git-scm.com/downloads)
+- **Docker Desktop**: [Install Docker](https://www.docker.com/products/docker-desktop/)
+- **VS Code (Optional)**: [Download VS Code](https://code.visualstudio.com/)
+
+## Step-by-Step Setup Guide
+
+### Step 1: Clone the Repository
+
+1. Open a terminal or command prompt.
+2. Clone the repository from GitHub using the following command:
+
+   ```sh
+   git clone https://github.com/hieubdn/HRM-Application.git
+   ```
+3. Navigate into the cloned repository:
+
+   ```sh
+   cd HRM-Application
+   ```
+
+### Step 2: Start Docker Desktop
+
+1. **Open Docker Desktop** on your machine.
+2. Wait until Docker Engine has started successfully. You should see a green "Running" indicator on Docker Desktop.
+
+### Step 3: Build and Start the Application with Docker
+
+1. In the terminal (still inside the `HRM-Application` directory), run the following command to build and start all services defined in the `docker-compose.yml` file:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+2. Docker will pull necessary images, build the containers, and start the services for the HRM Application. This may take a few minutes.
+
+### Step 4: Access the Application
+
+- Once all services are up and running, you can access different modules of the application in your web browser:
+  - **HRM Main Application**: [http://localhost:3000](http://localhost:3000)
+  - **Recruitment Module**: [http://localhost:3001](http://localhost:3001)
+  - **Employee Profiles Module**: [http://localhost:3002](http://localhost:3002)
+
+### Step 5: Stopping the Application
+
+1. To stop the application, go to your terminal where `docker-compose` is running and press `Ctrl + C` to stop the running containers.
+2. If you want to remove all containers, networks, and volumes created by Docker, run:
+
+   ```sh
+   docker-compose down
+   ```
+
+## Notes
+
+- **Docker Desktop** must be running before you attempt to start the application with Docker.
+- Make sure no other services are using ports `3000`, `3001`, `3002`, or `8080` to avoid conflicts.
+- If you face any issues, make sure to check the Docker logs for troubleshooting.
+
+## Common Issues
+
+- **Port Conflicts**: If any of the above ports are already in use, either stop the service using that port or modify the `docker-compose.yml` file to use different ports.
+- **Docker Engine Not Running**: Ensure Docker Desktop is open and running before running the `docker-compose` command.
+
+## Future Updates
+
+- If you update the code and want to run the updated version, run:
+  ```sh
+  git pull
+  docker-compose up --build
