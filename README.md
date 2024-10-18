@@ -11,9 +11,9 @@ Hệ thống HRM này được phát triển bằng kiến trúc Micro Frontend,
 ## Frontend
 - **Ngôn ngữ lập trình**: Sử dụng **React** để phát triển các module frontend.
 - **Các module**:
-  1 . **HRM-main**: Module chính quản lý ứng dụng, chứa menu và điều hướng tới các module phụ.
-  2 . **Tuyển dụng**: Module phụ để quản lý thông tin tuyển dụng nhân viên.
-  3 . **Hồ sơ nhân viên**: Module phụ để quản lý hồ sơ nhân viên.
+  1. **HRM-main**: Module chính quản lý ứng dụng, chứa menu và điều hướng tới các module phụ.
+  2. **Tuyển dụng**: Module phụ để quản lý thông tin tuyển dụng nhân viên.
+  3. **Hồ sơ nhân viên**: Module phụ để quản lý hồ sơ nhân viên.
 
 ## Yêu cầu UI
 - **Giao diện đơn giản** với các biểu mẫu cơ bản để nhập thông tin ứng viên trong module **"Tuyển dụng"**.
