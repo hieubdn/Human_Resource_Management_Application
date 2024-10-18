@@ -1,44 +1,66 @@
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
   mode: "development",
-devServer: {
-  static: {
-    directory: path.join(__dirname, 'dist'),
+  entry: "./src/index",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "auto",
   },
-  port: 3002,
-},
-
-output: {
-  filename: "remoteEntry.js",
-  publicPath: "http://localhost:3002/",
-  path: path.resolve(__dirname, "dist"),
-  clean: true,
-},
-
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: "babel-loader",
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "employeeProfiles",
       filename: "remoteEntry.js",
       exposes: {
-        "./App": "./src/App",
+        "./EmployeeProfilesApp": "./src/App",
       },
-      shared: require("./package.json").dependencies,
+      shared: {
+        react: {
+          import: "react", // đường dẫn tới react
+          singleton: true,
+          strictVersion: false,
+          requiredVersion: "18.2.0",
+        },
+        "react-dom": {
+          import: "react-dom",
+          singleton: true,
+          strictVersion: false,
+          requiredVersion: "18.2.0",
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      favicon: "./public/favicon.ico",
     }),
   ],
+  devServer: {
+    port: 3002,
+    open: true,
+    hot: false,
+  },
 };
