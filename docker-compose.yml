@@ -6,8 +6,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      EMAIL_USERNAME: ${EMAIL_USERNAME}
-      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      EMAIL_USERNAME: test.alphagenv@gmail.com
+      EMAIL_PASSWORD: nugr vkbw ealm iguw
+
     networks:
       - hrm-network
 
