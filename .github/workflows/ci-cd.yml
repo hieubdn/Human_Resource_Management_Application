@@ -32,4 +32,7 @@ jobs:
         run: docker-compose push
 
       - name: Deploy
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: docker-compose up -d

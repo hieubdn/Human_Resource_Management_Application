@@ -1,6 +1,8 @@
 package com.example.hrm_backend.controller;
 
 import com.example.hrm_backend.model.Employee;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employees")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:3002"})
 public class EmployeeController {
 
     private List<Employee> employees = new ArrayList<>();
@@ -21,52 +24,53 @@ public class EmployeeController {
 
     // 1. Create (Thêm nhân viên mới)
     @PostMapping
-    public Employee addEmployee(@RequestBody Employee employee) {
-        employee.setId((long) (employees.size() + 1)); 
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        employee.setId((long) (employees.size() + 1));
         employees.add(employee);
-        return employee;
+        return ResponseEntity.status(HttpStatus.CREATED).body(employee);
     }
 
     // 2. Read (Lấy danh sách nhân viên)
     @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employees;
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        return ResponseEntity.ok(employees);
     }
 
     // 3. Read (Lấy thông tin một nhân viên cụ thể theo ID)
     @GetMapping("/{id}")
-    public Employee getEmployeeById(@PathVariable Long id) {
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Optional<Employee> employee = employees.stream()
                 .filter(e -> e.getId().equals(id))
                 .findFirst();
-        return employee.orElse(null); 
+        return employee.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
     // 4. Update (Cập nhật thông tin nhân viên)
     @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee updatedEmployee) {
         for (int i = 0; i < employees.size(); i++) {
             Employee emp = employees.get(i);
             if (emp.getId().equals(id)) {
                 emp.setName(updatedEmployee.getName());
                 emp.setEmail(updatedEmployee.getEmail());
                 emp.setPhoneNumber(updatedEmployee.getPhoneNumber());
-                return emp;
+                return ResponseEntity.ok(emp);
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
     // 5. Delete (Xóa nhân viên)
     @DeleteMapping("/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
         Optional<Employee> employee = employees.stream()
                 .filter(e -> e.getId().equals(id))
                 .findFirst();
         if (employee.isPresent()) {
             employees.remove(employee.get());
-            return "Nhân viên với ID " + id + " đã được xóa.";
+            return ResponseEntity.ok("Nhân viên với ID " + id + " đã được xóa.");
         }
-        return "Không tìm thấy nhân viên với ID " + id + ".";
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Không tìm thấy nhân viên với ID " + id + ".");
     }
 }

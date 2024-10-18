@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/applicants")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:3002"})
 public class RecruitmentController {
 
     private List<Applicant> applicants = new ArrayList<>();
@@ -22,7 +23,7 @@ public class RecruitmentController {
     // 1. Create (Thêm ứng viên mới)
     @PostMapping
     public Applicant addApplicant(@RequestBody Applicant applicant) {
-        applicant.setId((long) (applicants.size() + 1)); // Tạo id mới
+        applicant.setId((long) (applicants.size() + 1));
         applicants.add(applicant);
         return applicant;
     }
@@ -39,7 +40,7 @@ public class RecruitmentController {
         Optional<Applicant> applicant = applicants.stream()
                 .filter(a -> a.getId().equals(id))
                 .findFirst();
-        return applicant.orElse(null); // Trả về null nếu không tìm thấy
+        return applicant.orElse(null);
     }
 
     // 4. Update (Cập nhật thông tin ứng viên)
@@ -54,7 +55,7 @@ public class RecruitmentController {
                 return app;
             }
         }
-        return null; // Trả về null nếu không tìm thấy ứng viên
+        return null;
     }
 
     // 5. Delete (Xóa ứng viên)

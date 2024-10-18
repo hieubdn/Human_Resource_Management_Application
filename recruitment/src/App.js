@@ -15,7 +15,7 @@ const RecruitmentApp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [applicants, setApplicants] = useState([]);
 
-  // Lấy danh sách ứng viên khi component được render
+
   useEffect(() => {
     const fetchApplicants = async () => {
       const data = await getApplicants();
@@ -29,7 +29,7 @@ const RecruitmentApp = () => {
     e.preventDefault();
     try {
       await addApplicant({ name, email, phoneNumber });
-      toast.success("Thêm ứng viên thành công!");
+      toast.success("Thêm ứng viên thành công và email thông báo đã được gửi!");
       setName("");
       setEmail("");
       setPhoneNumber("");
@@ -40,7 +40,7 @@ const RecruitmentApp = () => {
     }
   };
 
-  // Xử lý đồng ý tuyển dụng
+  // Xử lý tuyển dụng
   const handleAccept = async (applicant) => {
     try {
       // Thêm ứng viên vào danh sách nhân viên

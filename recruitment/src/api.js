@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const APPLICANT_API_BASE_URL = 'http://localhost:8080/api/applicants';
 const EMPLOYEE_API_BASE_URL = 'http://localhost:8080/api/employees';
+const SEND_EMAIL_API_BASE_URL = 'http://localhost:8080/api/sendemail';
 
 // API cho ứng viên
 export const getApplicants = async () => {
@@ -17,10 +18,12 @@ export const getApplicants = async () => {
 export const addApplicant = async (applicant) => {
   try {
     const response = await axios.post(APPLICANT_API_BASE_URL, applicant);
+    // Gọi API để gửi email sau khi thêm ứng viên thành công
+    await axios.post(SEND_EMAIL_API_BASE_URL, response.data);
     return response.data;
   } catch (error) {
     console.error('Error adding applicant:', error);
-    throw error; // Ném lỗi để có thể xử lý ở bên gọi hàm
+    throw error;
   }
 };
 
