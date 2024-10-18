@@ -35,9 +35,7 @@ Hệ thống HRM này được phát triển bằng kiến trúc Micro Frontend,
    - Toàn bộ ứng dụng nên chạy từ module **HRM-main**, đảm bảo điều hướng mượt mà giữa các module phụ.
 
 
-# HRM Application Setup Guide
-
-This guide will help you set up the HRM Application on your local machine step by step, including cloning the repository, installing required dependencies, and running the application using Docker.
+# HRM Application Setup Guide  -  ENGENG
 
 ## Prerequisites
 
@@ -112,13 +110,7 @@ Before starting, make sure you have the following software installed on your mac
   git pull
   docker-compose up --build
 
-
-
-
-
-# Hướng Dẫn Cài Đặt HRM Application
-
-Hướng dẫn này sẽ giúp bạn thiết lập HRM Application trên máy tính của bạn từng bước một, bao gồm việc clone repo, cài đặt các phụ thuộc cần thiết, và chạy ứng dụng bằng Docker.
+# Hướng Dẫn Cài Đặt HRM Application  -  VNM
 
 ## Yêu Cầu Trước Khi Bắt Đầu
 
