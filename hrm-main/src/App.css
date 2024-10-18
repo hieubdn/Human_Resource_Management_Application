@@ -1,5 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+  font-family: "inter", sans-serif, var(--default-font-family) !important;
 }
 
 .App-logo {
@@ -32,7 +38,53 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.hrm-main-application-title {
+  font-family: "inter", sans-serif !important;
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+.hrm-main-application-content {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.hrm-main-application-button {
+  text-decoration: none;
+  height: 3rem;
+  border-radius: 8px;
+  width: 17rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hrm-main-application-button span {
+  font-size: 20px;
+  font-weight: 550;
+  color: #646464;
+  font-family: "inter", sans-serif !important;
+}
+
+.hrm-main-application-recruitment-btn:hover {
+  background-color: #cecece55;
+}
+
+.hrm-main-application-employeeProfiles-btn:hover {
+  background-color: #cecece55;
+}
+
+.hrm-main-application-hr {
+  width: 70%;
+  border: #282c34 solid gray;
 }

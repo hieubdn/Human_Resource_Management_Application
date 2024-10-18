@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { addEmployee, addApplicant, deleteApplicant, getApplicants } from './api';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import {
+  addEmployee,
+  addApplicant,
+  deleteApplicant,
+  getApplicants,
+} from "./api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 const RecruitmentApp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [applicants, setApplicants] = useState([]);
 
   // Lấy danh sách ứng viên khi component được render
@@ -24,14 +29,14 @@ const RecruitmentApp = () => {
     e.preventDefault();
     try {
       await addApplicant({ name, email, phoneNumber });
-      toast.success('Thêm ứng viên thành công!');
-      setName('');
-      setEmail('');
-      setPhoneNumber('');
+      toast.success("Thêm ứng viên thành công!");
+      setName("");
+      setEmail("");
+      setPhoneNumber("");
       const data = await getApplicants();
       setApplicants(data);
     } catch (error) {
-      toast.error('Có lỗi xảy ra khi thêm ứng viên.');
+      toast.error("Có lỗi xảy ra khi thêm ứng viên.");
     }
   };
 
@@ -46,11 +51,11 @@ const RecruitmentApp = () => {
       });
       // Xóa ứng viên khỏi danh sách ứng viên
       await deleteApplicant(applicant.id);
-      toast.success('Đồng ý tuyển dụng ứng viên và thêm vào hồ sơ nhân viên!');
+      toast.success("Đồng ý tuyển dụng ứng viên và thêm vào hồ sơ nhân viên!");
       const data = await getApplicants();
       setApplicants(data);
     } catch (error) {
-      toast.error('Có lỗi xảy ra khi đồng ý tuyển dụng.');
+      toast.error("Có lỗi xảy ra khi đồng ý tuyển dụng.");
     }
   };
 
@@ -58,30 +63,48 @@ const RecruitmentApp = () => {
   const handleReject = async (id) => {
     try {
       await deleteApplicant(id);
-      toast.success('Đã từ chối tuyển dụng ứng viên!');
+      toast.success("Đã từ chối tuyển dụng ứng viên!");
       const data = await getApplicants();
       setApplicants(data);
     } catch (error) {
-      toast.error('Có lỗi xảy ra khi từ chối tuyển dụng.');
+      toast.error("Có lỗi xảy ra khi từ chối tuyển dụng.");
     }
   };
 
   return (
     <div className="container">
       <ToastContainer />
-      <h2 className="title">Recruitment Module - Nhập Thông Tin Ứng Viên</h2>
-      <form onSubmit={handleSubmit} className="form">
+      <h2 className="recruitment-title">Recruitment Module - Thông Tin Ứng Viên</h2>
+      <form onSubmit={handleSubmit} className="recruitment-form">
         <div className="form-group">
-          <label>Tên:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="form-control" />
+          <label>Họ và tên Ứng viên:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="form-control" />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label>Số Điện Thoại:</label>
-          <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required className="form-control" />
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+            className="form-control"
+          />
         </div>
         <button type="submit" className="btn btn-primary">
           Thêm Ứng Viên
@@ -107,10 +130,16 @@ const RecruitmentApp = () => {
               <td>{applicant.email}</td>
               <td>{applicant.phoneNumber}</td>
               <td>
-                <button onClick={() => handleAccept(applicant)} className="btn btn-success mr-2">
+                <button
+                  onClick={() => handleAccept(applicant)}
+                  className="btn btn-success mr-2"
+                >
                   Đồng Ý Tuyển Dụng
                 </button>
-                <button onClick={() => handleReject(applicant.id)} className="btn btn-danger">
+                <button
+                  onClick={() => handleReject(applicant.id)}
+                  className="btn btn-danger"
+                >
                   Từ Chối Tuyển Dụng
                 </button>
               </td>
