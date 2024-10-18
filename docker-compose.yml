@@ -1,0 +1,42 @@
+version: '2.29.6'
+
+services:
+  hrm-backend:
+    build: ./hrm-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - hrm-network
+
+  recruitment:
+    build: ./recruitment
+    ports:
+      - "3001:3001"
+    networks:
+      - hrm-network
+    depends_on:
+      - hrm-backend
+
+  employee-profiles:
+    build: ./employee-profiles
+    ports:
+      - "3002:3002"
+    networks:
+      - hrm-network
+    depends_on:
+      - hrm-backend
+
+  hrm-main:
+    build: ./hrm-main
+    ports:
+      - "3000:3000"
+    networks:
+      - hrm-network
+    depends_on:
+      - hrm-backend
+      - recruitment
+      - employee-profiles
+
+networks:
+  hrm-network:
+    driver: bridge
