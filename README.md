@@ -1,4 +1,4 @@
-<h1 align="center">The HRM system is implemented using a Micro Frontend architecture.</h1>
+<h1 align="center">The HRM system adopts a Micro Frontend architecture.</h1>
 
 ### Overview
 The HRM system is developed using a Micro Frontend architecture, consisting of independent modules integrated into a unified application. The design enables each module to be developed and deployed independently while ensuring a seamless navigation experience across different parts of the system.
@@ -169,3 +169,4 @@ Trước khi bắt đầu, hãy đảm bảo rằng bạn đã cài đặt các 
 <img src="https://img.shields.io/github/forks/yourusername/facebook-bm-admin-tool?style=social" alt="GitHub forks">
 <img src="https://img.shields.io/github/issues/yourusername/facebook-bm-admin-tool?style=social" alt="GitHub issues">
 </p>
+
