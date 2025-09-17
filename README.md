@@ -1,7 +1,7 @@
-<h1 align="center">Hệ thống HRM với kiến trúc Micro Frontend</h1>
+<h1 align="center">The HRM system is implemented using a Micro Frontend architecture.</h1>
 
-### Tổng quan
-Hệ thống HRM này được phát triển bằng kiến trúc Micro Frontend, bao gồm các module độc lập được tích hợp vào ứng dụng tổng thể. Hệ thống được xây dựng với mục tiêu có khả năng phát triển và triển khai độc lập cho từng module, đồng thời cung cấp trải nghiệm điều hướng mượt mà giữa các phần của ứng dụng.
+### Overview
+The HRM system is developed using a Micro Frontend architecture, consisting of independent modules integrated into a unified application. The design enables each module to be developed and deployed independently while ensuring a seamless navigation experience across different parts of the system.
 
 ### Kiến trúc Micro Frontend
 - **Webpack Module Federation**: Được sử dụng để tích hợp các module phụ vào ứng dụng HRM tổng thể.
@@ -158,3 +158,14 @@ Trước khi bắt đầu, hãy đảm bảo rằng bạn đã cài đặt các 
 - **Docker Desktop** phải được khởi động trước khi bạn chạy ứng dụng với Docker.
 - Hãy chắc chắn rằng không có dịch vụ nào khác đang sử dụng các cổng `3000`, `3001`, `3002`, hoặc `8080` để tránh xung đột.
 
+
+---
+<p align="center"><strong>Powered by <a href="https://hiubdn.com">hiubdn.com</a> - Enhanced Version</strong></p>
+
+<p align="center"><em>Copyright hiubdn.com - All rights reserved</em></p>
+
+<p align="center">
+<img src="https://img.shields.io/github/stars/yourusername/facebook-bm-admin-tool?style=social" alt="GitHub stars">
+<img src="https://img.shields.io/github/forks/yourusername/facebook-bm-admin-tool?style=social" alt="GitHub forks">
+<img src="https://img.shields.io/github/issues/yourusername/facebook-bm-admin-tool?style=social" alt="GitHub issues">
+</p>
